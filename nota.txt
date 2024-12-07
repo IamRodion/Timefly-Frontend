@@ -1,0 +1,4 @@
+El plan para las ramas del proyecto es:
+dev: Desarrollo (opciones debug activadas, claves y tokens en variables de entorno y no hardcodeados, código sin terminar, archivos temporales que no contengan secretos)
+test: Pruebas (opciones debug activadas, claves y tokens en variables de entorno y no hardcodeados, código funcional, archivos temporales que no contengan secretos)
+main: Producción (opciones debug desactivadas, claves y tokens en variables de entorno y no hardcodeados, código funcional, sin archivos temporales)
