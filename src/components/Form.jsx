@@ -1,6 +1,6 @@
 // src/components/Form.jsx
 import React, { useState } from 'react';
-import { Button, Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import InputField from './InputField';
 import SelectField from './SelectField';
 
@@ -24,8 +24,8 @@ const Form = () => {
   };
 
   return (
-    <Box sx={{ padding: 3 }}>
-      <form onSubmit={handleSubmit}>
+    <Box sx={{ padding: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '400px' }}>
         <InputField label="Enter some text" value={inputValue} onChange={handleInputChange} />
         <SelectField
           label="Choose an option"
