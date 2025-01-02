@@ -1,26 +1,45 @@
-import React from "react";
+// src/components/Form.jsx
+import React, { useState } from 'react';
+import { Box, Button } from '@mui/material';
+import InputField from './InputField';
+import SelectField from './SelectField';
 
-function Form({ setInputValue }) {
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+const Form = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSelectChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    alert(`Input: ${inputValue}, Selected: ${selectedOption}`);
   };
 
   return (
-    <div className="row justify-content-md-center">
-      <div className="form-floating my-3 col-lg-3">
-        <input
-          type="text"
-          className="form-control"
-          id="id-input"
-          placeholder="123456789"
-          onChange={handleInputChange}
+    <Box sx={{ padding: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '400px' }}>
+        <InputField label="Enter some text" value={inputValue} onChange={handleInputChange} />
+        <SelectField
+          label="Choose an option"
+          value={selectedOption}
+          onChange={handleSelectChange}
+          options={['Option 1', 'Option 2', 'Option 3']}
         />
-        <label className="mx-2" htmlFor="id-input">
-          ID Number
-        </label>
-      </div>
-    </div>
+        <Button type="submit" variant="contained" fullWidth>
+          Submit
+        </Button>
+      </form>
+      {formSubmitted && <p>Form submitted!</p>}
+    </Box>
   );
-}
+};
 
 export default Form;
