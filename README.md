@@ -1,4 +1,4 @@
-# Timefly-Frontend
+<!-- # Timefly-Frontend
 
 Timefly-Frontend es una interfaz de usuario (aplicación frontend ) diseñada para hacer uso de la API REST Timefly-Backend y facilitar la experiencia del usuario al permitir gestionar de forma interactiva e intuitiva el registro de llegadas y salidas de personal. Este proyecto está construido con React 18 y Material-UI (MUI).
 
@@ -117,7 +117,7 @@ Para agregar más funcionalidades o personalizar el diseño:
 
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [    ](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -185,3 +185,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ -->
