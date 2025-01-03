@@ -2,14 +2,33 @@
 import React, { useState } from 'react';
 import { Box, Button, IconButton } from '@mui/material';
 import { ArrowForward, ArrowBack } from '@mui/icons-material';
+import pngegg from '../assets/images/pngegg.png';
+import pngegg1 from '../assets/images/pngegg1.png';
+import pngegg2 from '../assets/images/pngegg2.png';
+import pngegg3 from '../assets/images/pngegg3.png';
+import pngegg4 from '../assets/images/pngegg4.png';
+import pngegg5 from '../assets/images/pngegg5.png';
+import pngegg6 from '../assets/images/pngegg6.png';
+import pngegg7 from '../assets/images/pngegg7.png';
+import pngegg8 from '../assets/images/pngegg8.png';
+
+
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const images = [
-    'https://via.placeholder.com/600x300?text=Image+1',
-    'https://via.placeholder.com/600x300?text=Image+2',
-    'https://via.placeholder.com/600x300?text=Image+3'
-  ];
+    pngegg,
+    pngegg1,
+    pngegg2,
+    pngegg3,
+    pngegg4,
+    pngegg5,
+    pngegg6,
+    pngegg7,
+    pngegg8,
+];
+
 
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);

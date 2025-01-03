@@ -47,20 +47,19 @@ Este proyecto utiliza las siguientes tecnologías:
 
 Timefly-Frontend/
 ├── src/
-│   ├── assets/
-│   │   ├── images/
-│   │   ├── theme/
-│   ├── auth/
-│   ├── layouts/
-│   ├── services/
-│   ├── components/
-│   │   ├── Formulario.jsx
-│   │   ├── BotonGuardar.jsx
-│   ├── App.js
-│   ├── main.js
-├── public/
-│   ├── images/
-├── package.json
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+├── layouts/
+│   ├── MainLayout.jsx
+│   ├── DashboardLayout.jsx
+├── pages/
+│   ├── Index.jsx
+│   ├── 
+│   ├── Dashboard.jsx
+├── App.jsx
+├── main.jsx
+
 
 - src/components: Contiene los componentes reutilizables de la aplicación.
 - App.js: Punto de entrada principal de la interfaz.
