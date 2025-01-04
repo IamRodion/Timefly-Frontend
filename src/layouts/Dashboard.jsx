@@ -9,7 +9,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Link, Outlet } from "react-router-dom";
 import Toolbar from "@mui/material/Toolbar";
-import AppBar from "@mui/material/AppBar";
 import { Typography } from "@mui/material";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -31,10 +30,10 @@ export default function ClippedDrawer() {
   ];
 
   return (
-    <Box sx={{ height: "100vh", scroll:"none" }}>
+    <Box sx={{ height: "100vh" }}>
       <Header />
 
-      <Box sx={{ display:"block", flexGrow: 1, mt: "6vh", mb: "3vh" }}>
+      <Box sx={{ display: "flex", flexGrow: 1, mt: "56px", mb: "3vh" }}>
         <Drawer
           variant="permanent"
           sx={{
@@ -59,7 +58,7 @@ export default function ClippedDrawer() {
                           component="img"
                           src={item.icon}
                           alt={`${item.text} icon`}
-                          sx={{ width: { xs: 30, sm: 50 }, height: { xs: 30, sm: 50 } }}
+                          sx={{ width: { xs: 40, sm: 60 }, height: { xs: 40, sm: 60 } }}
                         />
                       </ListItemIcon>
                       <ListItemText primary={item.text} />
@@ -79,7 +78,7 @@ export default function ClippedDrawer() {
             m: 1,
             p: 1,
             marginLeft: { xs: 200, sm: 240 },
-            paddingTop: "64px",
+            marginTop: "56px", // Espacio para el Header
           }}
         >
           <Outlet />

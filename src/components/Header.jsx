@@ -10,7 +10,8 @@ function Header() {
     display: "flex",
     justifyContent: "center",
     cursor: "pointer",
-    height: "7vh", 
+    height: "56px", // Altura fija en píxeles para el Header
+    width: "100%", // Ocupa todo el ancho de la pantalla
   };
 
   return (
@@ -28,7 +29,7 @@ function Header() {
           <img
             src="/src/assets/images/TimeFly-2.png"
             alt="TimeFly Logo"
-            style={{ height: "60px", marginRight: "10px" }}
+            style={{ height: "40px", marginRight: "10px" }}
           />
           <Typography variant="h5" noWrap>
             TimeFly
