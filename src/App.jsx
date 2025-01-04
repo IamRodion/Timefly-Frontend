@@ -13,7 +13,7 @@ import Dashboard from './layouts/Dashboard';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<DashboardLayout />}>
+      <Route path="/" element={<Dashboard />}>
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="dashboard/overview" element={<DashboardOverview />} />

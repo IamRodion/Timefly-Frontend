@@ -5,16 +5,16 @@ import { AppBar, Toolbar, Box, Typography } from "@mui/material";
 function Header() {
   const navigate = useNavigate();
   const headerStyles = {
-    background: "linear-gradient(135deg, #778da9, #415a77, #1b263b, #0d1b2a)",
+    background: "linear-gradient(135deg, #0d1b2a, #1b263b, #415a77, #778da9)",
     backgroundBlendMode: "multiply",
     display: "flex",
     justifyContent: "center",
     cursor: "pointer",
-    height: "6vh", // Altura fija para el Header
+    height: "7vh", 
   };
 
   return (
-    <AppBar position="relative" sx={{ ...headerStyles }}>
+    <AppBar position="fixed" sx={{ ...headerStyles, zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
         <Box
           sx={{
@@ -28,9 +28,9 @@ function Header() {
           <img
             src="/src/assets/images/TimeFly-2.png"
             alt="TimeFly Logo"
-            style={{ height: "40px", marginRight: "10px" }}
+            style={{ height: "60px", marginRight: "10px" }}
           />
-          <Typography variant="h6" noWrap>
+          <Typography variant="h5" noWrap>
             TimeFly
           </Typography>
         </Box>

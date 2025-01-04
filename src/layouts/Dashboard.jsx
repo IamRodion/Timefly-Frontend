@@ -1,99 +1,91 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import { Link, Outlet } from "react-router-dom";
+import Toolbar from "@mui/material/Toolbar";
+import AppBar from "@mui/material/AppBar";
+import { Typography } from "@mui/material";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import pngegg from "../assets/images/pngegg.png";
+import pngegg1 from "../assets/images/pngegg1.png";
+import pngegg2 from "../assets/images/pngegg2.png";
+import pngegg3 from "../assets/images/pngegg3.png";
+import pngegg4 from "../assets/images/pngegg4.png";
 
 const drawerWidth = 240;
 
 export default function ClippedDrawer() {
+  const menuItems = [
+    { text: "Home", route: "/", icon: pngegg },
+    { text: "About", route: "/about", icon: pngegg1 },
+    { text: "Overview", route: "/dashboard/overview", icon: pngegg2 },
+    { text: "Settings", route: "/dashboard/settings", icon: pngegg3 },
+    { text: "Profile", route: "/dashboard/profile", icon: pngegg4 },
+  ];
+
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Clipped drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-        }}
-      >
-        <Toolbar />
-        <Box sx={{ overflow: 'auto' }}>
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+    <Box sx={{ height: "100vh", scroll:"none" }}>
+      <Header />
+
+      <Box sx={{ display:"block", flexGrow: 1, mt: "6vh", mb: "3vh" }}>
+        <Drawer
+          variant="permanent"
+          sx={{
+            width: { xs: 200, sm: 240 },
+            flexShrink: 0,
+            [`& .MuiDrawer-paper`]: {
+              width: { xs: 200, sm: 240 },
+              boxSizing: "border-box",
+            },
+          }}
+        >
+          <Toolbar />
+
+          <Box sx={{ overflow: "auto" }}>
+            <List>
+              {menuItems.map((item, index) => (
+                <React.Fragment key={item.text}>
+                  <ListItem disablePadding>
+                    <ListItemButton component={Link} to={item.route}>
+                      <ListItemIcon>
+                        <Box
+                          component="img"
+                          src={item.icon}
+                          alt={`${item.text} icon`}
+                          sx={{ width: { xs: 30, sm: 50 }, height: { xs: 30, sm: 50 } }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                  {index < menuItems.length - 1 && <Divider />}
+                </React.Fragment>
+              ))}
+            </List>
+            <Divider />
+          </Box>
+        </Drawer>
+
+        <Box
+          component="main"
+          sx={{
+            m: 1,
+            p: 1,
+            marginLeft: { xs: 200, sm: 240 },
+            paddingTop: "64px",
+          }}
+        >
+          <Outlet />
         </Box>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
-        <Typography sx={{ marginBottom: 2 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography sx={{ marginBottom: 2 }}>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
       </Box>
+      <Footer />
     </Box>
   );
 }
