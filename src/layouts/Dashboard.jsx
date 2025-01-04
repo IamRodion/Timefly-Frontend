@@ -53,21 +53,39 @@ export default function ClippedDrawer() {
                 <React.Fragment key={item.text}>
                   <ListItem disablePadding>
                     <ListItemButton component={Link} to={item.route}>
-                      <ListItemIcon>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: "auto", // Elimina el ancho mínimo predeterminado
+                          marginRight: 2, // Espacio entre el ícono y el texto
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
                         <Box
                           component="img"
                           src={item.icon}
                           alt={`${item.text} icon`}
-                          sx={{ width: { xs: 40, sm: 60 }, height: { xs: 40, sm: 60 } }}
+                          sx={{
+                            width: { xs: 55, sm: 65 }, // Ajusta el tamaño según la pantalla
+                            height: { xs: 60, sm: 70 },
+                          }}
                         />
                       </ListItemIcon>
-                      <ListItemText primary={item.text} />
+                      <ListItemText
+                        primary={item.text}
+                        sx={{
+                          "& .MuiTypography-root": {
+                            fontSize: { xs: "0.9rem", sm: "1rem" }, // Ajusta el tamaño de fuente según el tamaño de pantalla
+                          },
+                        }}
+                      />
                     </ListItemButton>
                   </ListItem>
                   {index < menuItems.length - 1 && <Divider />}
                 </React.Fragment>
               ))}
             </List>
+
             <Divider />
           </Box>
         </Drawer>
@@ -77,7 +95,7 @@ export default function ClippedDrawer() {
           sx={{
             m: 1,
             p: 1,
-            marginLeft: { xs: 200, sm: 240 },
+           
             marginTop: "56px", // Espacio para el Header
           }}
         >
