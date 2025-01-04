@@ -1,22 +1,27 @@
-// src/App.jsx
 import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
-import Form from './components/Form';
-import ImageCarousel from './components/ImageCarousel';
+import { Routes, Route } from 'react-router-dom';
+import MainPage from './pages/Index';
+import Home from './pages/Home';
+import About from './pages/About';
+import DashboardOverview from './pages/DashboardOverview';
+import DashboardSettings from './pages/DashboardSettings';
+import DashboardProfile from './pages/DashboardProfile';
+import DashboardLayout from './layouts/DashboardLayout';
+import Dashboard from './layouts/Dashboard';
 
-const App = () => {
+
+function App() {
   return (
-    <Container sx={{ paddingTop: '2rem' }}>
-      <Box sx={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <Typography variant="h3" gutterBottom>
-          TimeFly Front v1
-        </Typography>
-      </Box>
-
-      <Form />
-      <ImageCarousel />
-    </Container>
+    <Routes>
+      <Route path="/" element={<DashboardLayout />}>
+        <Route path="home" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="dashboard/overview" element={<DashboardOverview />} />
+        <Route path="dashboard/settings" element={<DashboardSettings />} />
+        <Route path="dashboard/profile" element={<DashboardProfile />} />
+      </Route>
+    </Routes>
   );
-};
+}
 
 export default App;

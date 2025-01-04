@@ -43,7 +43,7 @@ Este proyecto utiliza las siguientes tecnologías:
 
     -- Esto iniciará la aplicación en [http://localhost:8080].
 
-## Estructura del Proyecto
+## Estructura del Proyecto inicial
 
 Timefly-Frontend/
 ├── src/
@@ -54,16 +54,17 @@ Timefly-Frontend/
 │   ├── MainLayout.jsx
 │   ├── DashboardLayout.jsx
 ├── pages/
-│   ├── Index.jsx
+│   ├── Home.jsx
 │   ├── 
 │   ├── Dashboard.jsx
 ├── App.jsx
 ├── main.jsx
 
 
-- src/components: Contiene los componentes reutilizables de la aplicación.
-- App.js: Punto de entrada principal de la interfaz.
-- main.js: Archivo principal para iniciar la aplicación con Vite.
+- App.jsx: Aquí defines tus rutas utilizando React Router. App actúa como una especie de "routero", gestionando las diferentes rutas de tu aplicación.
+- main.jsx: Este es el archivo de entrada principal, donde renderizas tu aplicación y configuras el Router.
+- Layouts: Estos componentes sirven como plantillas para las diferentes secciones de tu aplicación.
+- Components: Contiene los componentes reutilizables de la aplicación.
 
 ## Personalización
 
