@@ -93,6 +93,7 @@ export default function ClippedDrawer() {
         <Box
           component="main"
           sx={{
+            
             m: 1,
             p: 1,
            
