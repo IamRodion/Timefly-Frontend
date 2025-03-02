@@ -1,0 +1,25 @@
+El plan para las ramas del proyecto es:
+
+1.main (Producción)
+Contiene el código estable y en producción.
+Solo recibe cambios desde develop mediante pull requests y después de pruebas.
+(opciones debug desactivadas, claves y tokens en variables de entorno y no hardcodeados, código funcional, sin archivos temporales)
+
+2.develop (Integración)
+Rama principal de desarrollo donde se integran las nuevas funcionalidades antes de ser lanzadas a main.
+Recibe cambios desde las ramas de características o correcciones.
+(opciones debug activadas, claves y tokens en variables de entorno y no hardcodeados, código funcional, con archivos temporales)
+
+3.developer/nombre
+Ramas para cada desarrollador donde se desarrollan nuevas características, para estas nuevas características se detalla el avance en los commits y
+se especifica todo lo relacionado a la característica en el PR
+Se crean a partir de develop y, cuando terminan, se fusionan de nuevo en develop.
+Ejemplo: developer/Pepito_Perez.
+(opciones debug activadas, claves y tokens en variables de entorno, se pueden hardcorear temporalmente, código funcional, archivos temporales)
+
+
+4.fix/nombre-fix (Corrección de errores)
+Ramas para corregir errores en desarrollo.
+Se crean a partir de develop (si es un error en desarrollo) o main (si es un hotfix).
+Se fusionan de vuelta en la rama de origen.
+Ejemplo: fix/button-not-working.
