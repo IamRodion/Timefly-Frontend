@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // src/App.jsx
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
@@ -18,5 +19,26 @@ const App = () => {
     </Container>
   );
 };
+=======
+import FrontFly from "./pages/Front-Fly";
+import Default from "./components/Default";
+import "./App.css";
+import Button from "@mui/material/Button";
+
+function App() {
+  return (
+    <>
+      <div className="App">
+        {/* <Default /> */}
+      </div>
+
+      <div className="App">
+        <FrontFly />
+      </div>
+
+    </>
+  );
+}
+>>>>>>> Stashed changes
 
 export default App;
