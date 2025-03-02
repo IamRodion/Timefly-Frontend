@@ -1,14 +1,13 @@
-<!-- # Timefly-Frontend
+# Timefly-Frontend
 
-Timefly-Frontend es una interfaz de usuario (aplicación frontend ) diseñada para hacer uso de la API REST Timefly-Backend y facilitar la experiencia del usuario al permitir gestionar de forma interactiva e intuitiva el registro de llegadas y salidas de personal. Este proyecto está construido con React 18 y Material-UI (MUI).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Tecnologías
+Currently, two official plugins are available:
 
-Este proyecto utiliza las siguientes tecnologías:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **Reactjs 18**: Biblioteca para construir interfaces de usuariomediante js.
-- **Material-UI (MUI)**: Biblioteca de componentes basada en Material Design para React.
-- **npm**: Gestor de paquetes para instalar dependencias.
+## Expanding the ESLint configuration
 
 ## Configuración del Proyecto
 

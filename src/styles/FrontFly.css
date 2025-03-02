@@ -1,0 +1,21 @@
+.FrontFly{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #f0f0f0;
+    margin: 1%;
+    padding: 5%;
+}
+
+.FrontFly div{
+   margin: 1vh 0;
+}
+
+.TypeAndNumberId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh 0;
+}
