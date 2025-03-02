@@ -1,4 +1,4 @@
-<!-- # Timefly-Frontend
+# Timefly-Frontend
 
 Timefly-Frontend es una interfaz de usuario (aplicación frontend ) diseñada para hacer uso de la API REST Timefly-Backend y facilitar la experiencia del usuario al permitir gestionar de forma interactiva e intuitiva el registro de llegadas y salidas de personal. Este proyecto está construido con React 18 y Material-UI (MUI).
 
