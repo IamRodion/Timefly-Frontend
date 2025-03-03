@@ -8,7 +8,7 @@ function FrontFly() {
   return (
     <Grid2 className="FrontFly">
       <Box>
-        <Typography variant="h2">Bienvenido a FLY</Typography>
+        <Typography variant="h2">Bienvenido a TimeFly</Typography>
       </Box>
       <Box>
         <Watch />
