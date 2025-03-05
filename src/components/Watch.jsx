@@ -20,8 +20,8 @@ const Watch = ({ onFormattedTimeChange }) => {
 
   const formatTime = (date) => {
     const utcHours = date.getUTCHours();
-    const bogotaHours = (utcHours - 5 + 24) % 24; // Ajuste para UTC-5
-    const hours = String(bogotaHours).padStart(2, "0");
+   /*  const bogotaHours = (utcHours - 5 + 24) % 24; // Ajuste para UTC-5 */
+    const hours = String(utcHours).padStart(2, "0");
     const minutes = String(date.getUTCMinutes()).padStart(2, "0");
     const seconds = String(date.getUTCSeconds()).padStart(2, "0");
     return `${hours}:${minutes}:${seconds}`;

@@ -20,7 +20,7 @@ const TypeAndNumberId = ({onDocumentoChange}) => {
   };
 
   const handleButtonClick = () => {
-    if (inputValue.length > 5 && inputValue.length < 10) {
+    if (inputValue.length > 5 && inputValue.length <= 10) {
       onDocumentoChange(inputValue);
       setError(""); 
     } else {
