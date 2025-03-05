@@ -1,89 +1,97 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Box,
   Typography,
   Grid2,
-  InputLabel,
-  MenuItem,
-  Select,
   FormHelperText,
   FormControl,
+  TextField,
 } from "@mui/material";
 import "../styles/FrontFly.css";
 
-const TypeAndNumberId = () => {
-  /* const [time, setTime] = useState(new Date());
+const TypeAndNumberId = ({onDocumentoChange}) => {
+  
+  const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const timerID = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timerID);
-  }, []);
-
-  const formatTime = (date) => {
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-    return `${hours}:${minutes}:${seconds}`;
-  }; */
-  const [age, setAge] = useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
   };
+
+  const handleButtonClick = () => {
+    if (inputValue.length > 5 && inputValue.length < 10) {
+      onDocumentoChange(inputValue);
+      setError(""); 
+    } else {
+      setError("El número de documento debe tener más de 5 dígitos y menos de 10.");
+    }
+  };
+
+
   return (
-    <Grid2 container spacing={2} className="TypeAndNumberId">
-      <Grid2 item size={{ xs: 12 }}>
-        <Box>
-          <FormControl
-            sx={{ m: 1, width: "100%" }}
-            size="small"
-            error={age === "" ? true : false}
-          >
-            <InputLabel >
-              Seleccione su tipo de documento
-            </InputLabel>
-            <Select
-              
-              value={age}
-              label="Age"
-              onChange={handleChange}
-            >
-              <MenuItem value="">
-                <em>...</em>
-              </MenuItem>
-              <MenuItem value="CC">Cédula de ciudadania</MenuItem>
-              <MenuItem value="TI">Tarjeta de identidad</MenuItem>
-              <MenuItem value="DNI">DNI</MenuItem>
-              <MenuItem value="NIT">NIT</MenuItem>
-            </Select>
-            {/* <FormHelperText>Required</FormHelperText> */}
-          </FormControl>
-        </Box>
-      </Grid2>
-      <Grid2 item size={{ xs: 12, }}>
-        <Box>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </Box>
+    <Grid2 container spacing={0.5} className="TypeAndNumberId" sx={{ width: "800px" }}>
+      <Grid2 item size={{ xs: 6, md: 12 }}>
+        <FormControl
+          sx={{ m: 1, width: "80%", fontFamily: "Roboto Mono, sans-serif" }}
+          size="small"
+          error={error != ""}
+        >
+          <Grid2 container alignItems="center" >
+            <Grid2 item size={{ xs: 6, md: 6 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontFamily: "Roboto Mono, sans-serif" }}
+              >
+                Número de documento:
+              </Typography>
+            </Grid2>
+            <Grid2 item size={{ xs: 6, md: 6 }}>
+              <TextField
+                type="number"
+                value={inputValue}
+                onChange={handleInputChange}
+                variant="outlined"
+                fullWidth
+                sx={{
+                  fontFamily: "Roboto Mono, sans-serif",
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#3A7DFF",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#6A4C93",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#17A2B8",
+                    },
+                  },
+                }}
+              />
+            </Grid2>
+            {error != "" && (
+              <Grid2
+                item
+                size={{ xs: 12, md: 12 }}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FormHelperText sx={{color: "red", fontFamily: "Roboto Mono, sans-serif" }}>
+                  {error}
+                </FormHelperText>
+              </Grid2>
+            )}
+          </Grid2>
+        </FormControl>
       </Grid2>
 
-      <Grid2 item size={{ xs: 12 }}>
-        <Box>
-          <Button variant="outlined" color="primary">
-            Botón de MUI
-          </Button>
-        </Box>
+      <Grid2 item size={{ xs: 6, md: 12 }}>
+        <Button variant="contained" sx={{background:"#17A2B8", color:"Black"}} onClick={handleButtonClick}>
+          Registrar
+        </Button>
       </Grid2>
     </Grid2>
   );

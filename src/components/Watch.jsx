@@ -2,24 +2,34 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import "../styles/FrontFly.css";
 
-const Watch = () => {
+const Watch = ({ onFormattedTimeChange }) => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
-    const timerID = setInterval(() => setTime(new Date()), 1000);
+    const timerID = setInterval(() => {
+      const newTime = new Date();
+      setTime(newTime);
+      const formattedTime = formatTime(newTime);
+      
+      if (onFormattedTimeChange) {
+        onFormattedTimeChange(formattedTime);
+      }
+    }, 1000);
     return () => clearInterval(timerID);
-  }, []);
+  }, [ onFormattedTimeChange]);
 
   const formatTime = (date) => {
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
+    const utcHours = date.getUTCHours();
+    const bogotaHours = (utcHours - 5 + 24) % 24; // Ajuste para UTC-5
+    const hours = String(bogotaHours).padStart(2, "0");
+    const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+    const seconds = String(date.getUTCSeconds()).padStart(2, "0");
     return `${hours}:${minutes}:${seconds}`;
   };
 
   return (
     <Box>
-      <Typography variant="h3">{formatTime(time)}</Typography>
+      <Typography variant="h1" sx={{color:"#333A40", fontFamily: 'Roboto Mono, sans-serif' }}>{formatTime(time)}</Typography>
     </Box>
   );
 };

@@ -1,12 +1,27 @@
+:root {
+    font-family: "Roboto Mono", monospace, sans-serif;
+  }
 .FrontFly{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    background-color: #f0f0f0;
+    width: 55vw;
+    background-color: #d9dde0;
     margin: 1%;
+    margin-top: 60px;
     padding: 5%;
+    border-radius: 3%;
+    border: 2px solid #333A40; 
+    
+}
+
+.FrontFly-Logo{
+    margin-top: -12vh !important;
+}
+.FrontFly-Logo img{
+    border: 2px solid #333A40; 
+    height: 20vh;
 }
 
 .FrontFly div{
