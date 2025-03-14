@@ -7,8 +7,15 @@ export const handleTimeEntry = async (documento) => {
     console.log("GET", employeeData);
     const workerId = employeeData.id;
 
+    // 2. Obtener los registros de tiempo del empleado
+    const { data: timeEntries } = await axios.get(`/api/TimeEntry/${workerId}/`);
+    console.log("Time Entries", timeEntries);
 
-    // 2. Enviar la entrada de tiempo
+    /* // 3. Obtener el último registro basado en el atributo "time"
+    const lastEntry = timeEntries.sort((a, b) => new Date(b.time) - new Date(a.time))[0];
+    console.log("Último registro", lastEntry); */
+
+    // 4. Enviar la entrada de tiempo
     await axios.post("/api/TimeEntry/", {
       entry_type: "OUT",
       worker: workerId,

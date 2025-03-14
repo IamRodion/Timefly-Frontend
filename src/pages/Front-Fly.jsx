@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -12,12 +11,14 @@ import {
 } from "@mui/material";
 import Watch from "../components/Watch";
 import TypeAndNumberId from "../components/TypeAndNumberId";
-import "../styles/FrontFly.css";
 import { handleTimeEntry } from "../routes/iamrodionAPI";
+import "../styles/FrontFly.css";
+import "../styles/boton-neon-master/boton-neon-master/estilos.css";
 
 function FrontFly() {
   const [formattedTime, setFormattedTime] = useState("");
   const [documento, setDocumento] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFormattedTimeChange = (newFormattedTime) => {
     setFormattedTime(newFormattedTime);
@@ -27,20 +28,20 @@ function FrontFly() {
     setDocumento(newDocumento);
   };
 
-  useEffect(() => {
+  const handleButtonClick = async () => {
     if (documento) {
-      const data = {
-        Documento: documento,
-        HoraRegistro: formattedTime,
-      };
-      console.log(JSON.stringify(data));
-      handleTimeEntry(documento);
-    } // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [documento]);
+      setIsLoading(true);
+      try {
+        await handleTimeEntry(documento);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
 
   return (
     <Grid2 container className="FrontFly" spacing={2}>
-      <Grid2 item  className="FrontFly-Logo">
+      <Grid2 item xs={12} className="FrontFly-Logo">
         <CardMedia
           component="img"
           alt="green iguana"
@@ -48,16 +49,16 @@ function FrontFly() {
           sx={{ borderRadius: "5%" }}
         />
       </Grid2>
-      <Grid2 item size={{ xs: 12 }}>
-        <Typography variant="h3" sx={{ fontFamily: "Roboto Mono, sans-serif",fontSize: "3.5vw", }}>
+      <Grid2 item xs={12}>
+        <Typography variant="h3" sx={{ fontFamily: "Roboto Mono, sans-serif", fontSize: "3.5vw" }}>
           Bienvenido a TimeFly
         </Typography>
       </Grid2>
-      <Grid2 item size={{ xs: 12 }} >
+      <Grid2 item xs={12}>
         <Watch onFormattedTimeChange={handleFormattedTimeChange} />
       </Grid2>
-      <Grid2 item size={{ xs: 12 }}>
-        <TypeAndNumberId onDocumentoChange={handleDocumentoChange} />
+      <Grid2 item xs={12}>
+        <TypeAndNumberId onDocumentoChange={handleDocumentoChange} isLoading={isLoading} onButtonClick={handleButtonClick} />
       </Grid2>
     </Grid2>
   );
