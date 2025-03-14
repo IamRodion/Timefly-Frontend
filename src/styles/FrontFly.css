@@ -25,12 +25,19 @@
 }
 
 .FrontFly div{
-   margin: 1vh 0;
+   margin: 0.5vh 0;
 }
 
 .TypeAndNumberId{
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
-    margin: 1vh 0;
+    margin: 1vh 0 !important;
 }
+
+.TypeAndNumberId Button{
+    margin: 1vw !important;
+    
+}
+
+

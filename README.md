@@ -9,6 +9,7 @@ Este proyecto utiliza las siguientes tecnologías:
 - **Reactjs 18**: Biblioteca para construir interfaces de usuariomediante js.
 - **Material-UI (MUI)**: Biblioteca de componentes basada en Material Design para React.
 - **npm**: Gestor de paquetes para instalar dependencias.
+- **axios**: Librería que simplifica las peticiones HTTP y maneja mejor los errores.
 
 ## Configuración del Proyecto
 

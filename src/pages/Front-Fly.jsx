@@ -13,13 +13,11 @@ import {
 import Watch from "../components/Watch";
 import TypeAndNumberId from "../components/TypeAndNumberId";
 import "../styles/FrontFly.css";
+import { handleTimeEntry } from "../routes/iamrodionAPI";
 
 function FrontFly() {
-
   const [formattedTime, setFormattedTime] = useState("");
   const [documento, setDocumento] = useState("");
-
-
 
   const handleFormattedTimeChange = (newFormattedTime) => {
     setFormattedTime(newFormattedTime);
@@ -29,38 +27,38 @@ function FrontFly() {
     setDocumento(newDocumento);
   };
 
-
   useEffect(() => {
     if (documento) {
       const data = {
-        "Documento":documento,
-        "HoraRegistro": formattedTime,
+        Documento: documento,
+        HoraRegistro: formattedTime,
       };
       console.log(JSON.stringify(data));
-    }// eslint-disable-next-line react-hooks/exhaustive-deps
+      handleTimeEntry(documento);
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documento]);
 
   return (
-    <Grid2 className="FrontFly">
-      <Box  className="FrontFly-Logo" >
+    <Grid2 container className="FrontFly" spacing={2}>
+      <Grid2 item  className="FrontFly-Logo">
         <CardMedia
           component="img"
           alt="green iguana"
-          /* height="150vh" */
           image="/images/TimeFly_Logo_1.png"
           sx={{ borderRadius: "5%" }}
         />
-      </Box>
-      <Box >
-        <Typography variant="h3" sx={{ fontFamily: 'Roboto Mono, sans-serif' }}>Bienvenido a TimeFly</Typography>
-      </Box>
-     
+      </Grid2>
+      <Grid2 item size={{ xs: 12 }}>
+        <Typography variant="h3" sx={{ fontFamily: "Roboto Mono, sans-serif",fontSize: "3.5vw", }}>
+          Bienvenido a TimeFly
+        </Typography>
+      </Grid2>
+      <Grid2 item size={{ xs: 12 }} >
         <Watch onFormattedTimeChange={handleFormattedTimeChange} />
-        {/* <p>Current Time in Bogotá: {formattedTime}</p> */}
-      
-      
+      </Grid2>
+      <Grid2 item size={{ xs: 12 }}>
         <TypeAndNumberId onDocumentoChange={handleDocumentoChange} />
-     
+      </Grid2>
     </Grid2>
   );
 }
