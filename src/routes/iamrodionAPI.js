@@ -5,12 +5,14 @@ export const handleTimeEntry = async (documento) => {
   let fullName = "";
   let workerId = "";
   let entryType = "";
+  let url = "https://iamrodion.pythonanywhere.com";
 
   try {
     // 1. Obtener los datos del empleado
     let employeeData;
     try {
-      const response = await axios.get(`/api/Worker/employee/${documento}/`);
+      //const response = await axios.get(`/api/Worker/employee/${documento}/`);
+      const response = await axios.get(`${url}/api/Worker/employee/${documento}/`);
       employeeData = response.data;
       //console.log("Datos", employeeData);
     } catch (error) {
@@ -22,7 +24,8 @@ export const handleTimeEntry = async (documento) => {
     // 2. Obtener el último registro de tiempo del empleado
     let lastEntry;
     try {
-      const response = await axios.get(`/api/TimeEntry/employee_last_entry/${documento}/`);
+      // const response = await axios.get(`/api/TimeEntry/employee_last_entry/${documento}/`);
+      const response = await axios.get(`${url}/api/TimeEntry/employee_last_entry/${documento}/`);
       lastEntry = response.data;
       //console.log("Último registro de ", fullName, " ", lastEntry);
     } catch (error) {
@@ -34,14 +37,16 @@ export const handleTimeEntry = async (documento) => {
     // 3. Enviar la entrada de tiempo
     try {
       if (lastEntry.entry_type === "IN") {
-        await axios.post("/api/TimeEntry/", {
+        // await axios.post("/api/TimeEntry/", {
+        await axios.post(`${url}/api/TimeEntry/`, {
           entry_type: "OUT",
           worker: workerId,
         });
         entryType = "salida";
         //console.log("Salida registrada con éxito");
       } else {
-        await axios.post("/api/TimeEntry/", {
+        // await axios.post("/api/TimeEntry/", {
+        await axios.post(`${url}/api/TimeEntry/`, {
           entry_type: "IN",
           worker: workerId,
         });
@@ -54,7 +59,8 @@ export const handleTimeEntry = async (documento) => {
 
     // 4. Obtener todos los registros de tiempo del empleado
     try {
-      const response = await axios.get(`/api/TimeEntry/employee_id/${documento}/`);
+      // const response = await axios.get(`/api/TimeEntry/employee_id/${documento}/`);
+      const response = await axios.get(`${url}/api/TimeEntry/employee_id/${documento}/`);
       const timeEntries = response.data;
       //console.log("Todos los registros de ", fullName, " ", timeEntries);
     } catch (error) {
