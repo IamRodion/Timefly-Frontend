@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
-  "name": "timeflyfront",
-=======
   "name": "front-reactjs-1",
->>>>>>> Stashed changes
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,26 +12,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-<<<<<<< Updated upstream
-    "@mui/icons-material": "^6.3.0",
-    "@mui/material": "^6.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^9.17.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.16",
-    "globals": "^15.14.0",
-    "vite": "^6.0.5"
-=======
     "@mui/icons-material": "^6.4.6",
-    "@mui/material": "^6.4.6",
+    "@mui/material": "^6.4.7",
+    "axios": "^1.8.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -49,6 +28,5 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "vite": "^6.2.0"
->>>>>>> Stashed changes
   }
 }

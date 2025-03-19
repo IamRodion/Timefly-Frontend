@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+:root {
+  font-family: "Roboto Mono", monospace, sans-serif;
+}
 
 .logo {
   height: 6em;
@@ -39,4 +42,10 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

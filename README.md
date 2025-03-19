@@ -9,6 +9,7 @@ Este proyecto utiliza las siguientes tecnologías:
 - **Reactjs 18**: Biblioteca para construir interfaces de usuariomediante js.
 - **Material-UI (MUI)**: Biblioteca de componentes basada en Material Design para React.
 - **npm**: Gestor de paquetes para instalar dependencias.
+- **axios**: Librería que simplifica las peticiones HTTP y maneja mejor los errores.
 
 ## Configuración del Proyecto
 
@@ -50,14 +51,13 @@ Timefly-Frontend/
 │   │   ├── Formulario.jsx
 │   │   ├── BotonGuardar.jsx
 │   ├── App.js
-│   ├── index.js
+│   ├── 
 ├── public/
 │   ├── images/
 ├── package.json
 
 - src/components: Contiene los componentes reutilizables de la aplicación.
 - App.js: Punto de entrada principal de la interfaz.
-- index.js: Archivo principal para renderizar la aplicación en el DOM.
 
 ## Personalización
 Para agregar más funcionalidades o personalizar el diseño:
@@ -66,6 +66,4 @@ Para agregar más funcionalidades o personalizar el diseño:
 ## Recursos Adicionales
     1. Documentación de React
     2. Documentación de Material-UI
-
-
 
