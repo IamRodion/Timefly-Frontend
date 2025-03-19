@@ -15,8 +15,10 @@ const TypeAndNumberId = ({ onDocumentoChange, isLoading, onButtonClick }) => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+  const handleInputChange = (e) => {
+    const documento = e.target.value;
+    //console.log("Documento ingresado", documento);
+    setInputValue(documento);
   };
 
   const handleButtonClick = () => {
@@ -55,7 +57,7 @@ const TypeAndNumberId = ({ onDocumentoChange, isLoading, onButtonClick }) => {
           <Grid2 item size={{ xs: 12, md: 12, lg: 6 }}>
             <TextField
               type="number"
-              value={inputValue}
+              //value={inputValue}
               onChange={handleInputChange}
               variant="outlined"
               sx={{
@@ -110,11 +112,12 @@ const TypeAndNumberId = ({ onDocumentoChange, isLoading, onButtonClick }) => {
                 background: "#17A2B8",
                 color: "Black",
                 width: "150px",
-                border: `2px solid ${isLoading ? "#6A4C93" : "#17A2B8"}`, 
+                border: `2px solid ${isLoading ? "#6A4C93" : "#17A2B8"}`,
                 "&:hover": {
                   boxShadow:
                     "0 0 5px #6A4C93, 0 0 20px #6A4C93, 0 0 40px #6A4C93",
                 },
+                fontWeight: "bold"
               }}
               onClick={handleButtonClick}
               disabled={isLoading}

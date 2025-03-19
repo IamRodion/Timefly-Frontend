@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -10,15 +11,23 @@ import {
   Button,
 } from "@mui/material";
 import Watch from "../components/Watch";
+import DescriptionAlerts from "../components/Alerts";
 import TypeAndNumberId from "../components/TypeAndNumberId";
+import BasicModal from "../components/Modal";
 import { handleTimeEntry } from "../routes/iamrodionAPI";
 import "../styles/FrontFly.css";
-import "../styles/boton-neon-master/boton-neon-master/estilos.css";
 
 function FrontFly() {
   const [formattedTime, setFormattedTime] = useState("");
   const [documento, setDocumento] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [shouldSubmit, setShouldSubmit] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    severity: "",
+  });
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleFormattedTimeChange = (newFormattedTime) => {
     setFormattedTime(newFormattedTime);
@@ -28,16 +37,43 @@ function FrontFly() {
     setDocumento(newDocumento);
   };
 
-  const handleButtonClick = async () => {
-    if (documento) {
-      setIsLoading(true);
-      try {
-        await handleTimeEntry(documento);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+  const handleButtonClick = () => {
+    setShouldSubmit(true);
   };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setAlert({ ...alert, open: false });
+  };
+
+  useEffect(() => {
+    const submitData = async () => {
+      if (shouldSubmit && documento) {
+        setIsLoading(true);
+        try {
+          const result = await handleTimeEntry(documento);
+          setAlert({
+            open: true,
+            message: result.message,
+            severity: result.status === "success" ? "success" : "info",
+          });
+          setModalOpen(true);
+        } catch (error) {
+          setAlert({
+            open: true,
+            message: "Ha ocurrido un error inesperado.",
+            severity: "error",
+          });
+          setModalOpen(true);
+        } finally {
+          setIsLoading(false);
+          setShouldSubmit(false);
+        }
+      }
+    };
+
+    submitData();
+  }, [shouldSubmit, documento]);
 
   return (
     <Grid2 container className="FrontFly" spacing={2}>
@@ -50,7 +86,10 @@ function FrontFly() {
         />
       </Grid2>
       <Grid2 item xs={12}>
-        <Typography variant="h3" sx={{ fontFamily: "Roboto Mono, sans-serif", fontSize: "3.5vw" }}>
+        <Typography
+          variant="h3"
+          sx={{ fontFamily: "Roboto Mono, sans-serif", fontSize: "3.5vw" }}
+        >
           Bienvenido a TimeFly
         </Typography>
       </Grid2>
@@ -58,7 +97,19 @@ function FrontFly() {
         <Watch onFormattedTimeChange={handleFormattedTimeChange} />
       </Grid2>
       <Grid2 item xs={12}>
-        <TypeAndNumberId onDocumentoChange={handleDocumentoChange} isLoading={isLoading} onButtonClick={handleButtonClick} />
+        <TypeAndNumberId
+          onDocumentoChange={handleDocumentoChange}
+          isLoading={isLoading}
+          onButtonClick={handleButtonClick}
+        />
+      </Grid2>
+      <Grid2 item xs={12}>
+        <BasicModal
+          open={modalOpen}
+          alertMessage={alert.message}
+          alertSeverity={alert.severity}
+          handleClose={handleCloseModal}
+        />
       </Grid2>
     </Grid2>
   );
