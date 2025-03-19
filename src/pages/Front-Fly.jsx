@@ -81,7 +81,7 @@ function FrontFly() {
         <CardMedia
           component="img"
           alt="green iguana"
-          image="/images/TimeFly_Logo_1.png"
+          image="/Timefly-Frontend/images/TimeFly_Logo_1.png"
           sx={{ borderRadius: "5%" }}
         />
       </Grid2>
