@@ -16,7 +16,8 @@ export const handleTimeEntry = async (documento) => {
       employeeData = response.data;
       //console.log("Datos", employeeData);
     } catch (error) {
-      throw new Error("El documento ingresado no existe, contacte con el administrador. " /* + (error.response?.data || error.message) */);
+      const errorMessage = error.response?.data?.error || error.message || "Error desconocido";
+      throw new Error("El documento ingresado no existe, contacte con el administrador. " /* + errorMessage */);
     }
 
     fullName = `${employeeData.firstname} ${employeeData.lastname}`;
@@ -29,7 +30,13 @@ export const handleTimeEntry = async (documento) => {
       lastEntry = response.data;
       //console.log("Último registro de ", fullName, " ", lastEntry);
     } catch (error) {
-      throw new Error("Error al obtener el último registro de tiempo del empleado: " + (error.response?.data || error.message));
+      const errorMessage = error.response?.data?.error || error.message || "Error desconocido";
+      // Verificar si el mensaje de error es "Worker has no entries"
+      if (errorMessage === "Worker has no entries") {
+        lastEntry = { entry_type: "OUT" }; // Asignar "OUT" a lastEntry
+      } else {
+        throw new Error("Error al obtener el último registro de tiempo del empleado: " + errorMessage);
+      }
     }
 
     workerId = lastEntry.worker;
@@ -54,7 +61,8 @@ export const handleTimeEntry = async (documento) => {
         //console.log("Entrada registrada con éxito");
       }
     } catch (error) {
-      throw new Error("Error al enviar la entrada de tiempo: " + (error.response?.data || error.message));
+      const errorMessage = error.response?.data?.error || error.message || "Error desconocido";
+      throw new Error("Error al enviar la entrada de tiempo: " + errorMessage);
     }
 
     // 4. Obtener todos los registros de tiempo del empleado
@@ -64,7 +72,8 @@ export const handleTimeEntry = async (documento) => {
       const timeEntries = response.data;
       //console.log("Todos los registros de ", fullName, " ", timeEntries);
     } catch (error) {
-      throw new Error("Error al obtener todos los registros de tiempo del empleado: " + (error.response?.data || error.message));
+      const errorMessage = error.response?.data?.error || error.message || "Error desconocido";
+      throw new Error("Error al obtener todos los registros de tiempo del empleado: " + errorMessage);
     }
 
     return { status: "success", message: "Se ha registrado correctamente la " + (entryType) + " de " + (fullName)  };
